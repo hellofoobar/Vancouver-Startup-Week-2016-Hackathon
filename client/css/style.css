@@ -8,7 +8,9 @@ html {
 	/*background-color:#2d2d2a; */
 }
 body{
-	background-color: #81D8D0;
+	/*background-color: #81D8D0;*/
+  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
 	color: white;
 	overflow-x: scroll;
 	overflow-y: scroll;
