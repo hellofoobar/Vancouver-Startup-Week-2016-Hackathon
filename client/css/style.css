@@ -566,7 +566,7 @@ footer {
     text-align: center;
     padding: 2rem;
     width: 100%;
-  
+    z-index: 6;
     clear: both;
     bottom:0;
     position:absolute;

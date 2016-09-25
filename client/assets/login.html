@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/login.css">
-
+	<script   src="https://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="   crossorigin="anonymous"></script>
 </head>
 <body class="full-width ">
 <script>
@@ -53,9 +53,9 @@
 				<h1>Welcome</h1>
 				
 				<form class="form">
-					<input type="text" placeholder="Username">
-					<input type="password" placeholder="Password">
-					<button type="submit" id="login-button">Login</button>
+					<input type="text" id="username" placeholder="Username">
+					<input type="password" id="password" placeholder="Password">
+					<button type="submit" id="signin" >Login</button>
 				</form>
 			</div>
 			
@@ -95,8 +95,52 @@
 		  </div>
 	</footer>
 
-  
+  <script type="text/javascript">
+  	 $('#signin').click(function (e) {
+e.preventDefault();
+var username = $('#username').val();
+var password = $('#password').val();
+console.log("fired");
+if (username !== "" && password !== "") {
+	
+    $.ajax({
+        cache: false, // no cache
+        url: '/login', // your url; on jsfiddle /echo/json/
+        type: 'POST', // request method
+        dataType: 'json', // the data type, here json. it's simple to use with php -> json_decode
+        data: {
+            username: username,
+            password: password// here the email
+        },
+        success: function (data) {
+            // console.log(data);
+            // $('<strong />', {
+            //     text: 'Logged In!'
+            // }).prependTo('#state');
+            console.log(data);
+            console.log("logged in");
+        },
+        error: function (e) {
+            // $('<strong />', {
+            //     text: 'A error occured.'
+            // }).prependTo('#state');
+             console.log(e);
+            console.log("error");
+        },
+        fail: function () {
+            // $('<strong />', {
+            //     text: 'The request failed!'
+            // }).prependTo('#state');
+        }
+    });
+} else {
+    alert("oops");
+}
+});
+  </script>
   <script src="../js/jquery.min.js"></script>
   <script src = "../js/bootstrap.min.js"></script>
+  <!-- <script src = "../js/login.js"></script> -->
+
 </body>
 </html>
